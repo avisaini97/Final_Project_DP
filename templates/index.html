@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Housing Price in USA</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1 align="center">Predict Property Cost</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="bedrooms" placeholder="Bedrooms" required="required" />
+        <input type="text" name="bathrooms" placeholder="Bathrooms" required="required" />
+		<input type="text" name="sqft_living" placeholder="Living Ar." required="required" />
+		<input type="text" name="sqft_lot" placeholder="Lot Ar" required="required" />
+		<input type="text" name="floors" placeholder="Floors" required="required" />
+		<input type="text" name="sqft_above" placeholder="Above Ar." required="required" />
+		<input type="text" name="sqft_basement" placeholder="Basement Ar." required="required" />
+		<input type="text" name="sqft_living15" placeholder="2nd Living Ar." required="required" />
+		<input type="text" name="sqft_lot15" placeholder="2nd Lot Ar." required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+
+   <br>
+   <br>
+   {{ prediction_text }}
+	
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+
+<h2 align="center">Exploratory Data Analysis</h2>
+<p>Some pictorial representation of the current housing trend:</p>
+
+<div class="row">
+  <div class="column">
+    <img src="{{url_for('static',filename='line.jpg')}}" alt="line graph" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="{{url_for('static',filename='bed.jpg')}}" alt="bar graph" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="{{url_for('static',filename='area.jpg')}}" alt="area" style="width:100%">
+  </div>
+</div>
+ </div>
+
+
+
+
+
+</body>
+</html>
